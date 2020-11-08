@@ -56,9 +56,13 @@ li {
     margin: 0 auto;
 }
 
-@media screen and (min-width: 1600px) {
-    .header { 
-        display: flex;
+@media screen and (max-width: 1600px) {
+    html { 
+        align-items: center;
+        text-align: center;
         justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
     }
 }
