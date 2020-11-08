@@ -1,107 +1,64 @@
-/*CSS*/
 body {
-    background: #eee;
-  }
-  
-  .wrapper {
+    background: #CC99FF;
+}
+
+.wrapper { 
     display: flex;
-    flex-direction: column;
-  }
-  
-  .container {
-    min-height: 100%;
-  }
-  
-  .header {
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin: 0;
-    margin-bottom: 5px;
-    padding: 4px 8px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    text-decoration: wavy;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 500;
+    color: #155084;
+    text-shadow: 1px 1px black;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.userId {
+    width: 35%;
+    margin: 25px 25px;
+    padding: 4px;
     border-radius: 4px;
-  }
-  
-  .flex-outer li,
-  .flex-inner {
+}
+
+.results {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     flex-direction: column;
-  }
-  
-  .flex-outer > li > label,
-  .flex-outer li p {
-    flex: 1 0 125px;
-    max-width: 225px;
-    padding: 8px;
-  }
-   
-  .flex-outer > li > label + *,
-  .flex-inner {
-    flex: 1 0 225px;
-  }
-  
-  .flex-outer button {
-    background-color: palevioletred;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    border-radius: 3px;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  .flex-inner li {
-    width: 100%;
-    padding: 8px 16px;
+    align-items: center;
+}
+
+.results > li {
+    background: linear-gradient(#98FB98,#FA867E);
+    padding-top: 2%;
+    width: 45%;
+    border-radius: 4px;
+}
+
+li {
     display: flex;
-    flex-direction: row;
-  }
-  
-  .flex-inner input {
-    margin-right: 15px;
-  }
-  
-  .flex-inner {
-    padding: 0 8px;
-    justify-content: space-between;
-  }
-  
-  .flex-outer {
+    justify-content: start;
+}
+
+.flex-outer {
     width: 960px;
     padding: 0 16px;
-    margin:0 auto;
-  }
-  
-  
-  .h1 {
-    margin: 20px 50px;
-    padding: 0 20px;
-    min-height: 75px;
-    background-image: linear-gradient(rgb(24,96,144), purple);
-    color: white;
-    display: flex;
-    
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-transform: capitalize;
-    flex-wrap: nowrap;
-    border-radius: 4px;
-  }
-  
-  #chartContainer {
-      background: darkgray;
-      border: 2px dotted black;
-      border-radius: 4px;
-      height: 500px;
-      width: 100%;
-      margin-bottom: 15px;
-  }
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1600px) {
+    .header { 
+        display: flex;
+        justify-content: center;
+    }
+}
