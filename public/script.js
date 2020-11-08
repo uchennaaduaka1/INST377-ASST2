@@ -1,51 +1,36 @@
-const api = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+const restaurant = [];
 
-const restArr = [];
+fetch(endpoint).then(blob => blob.json()).then(data => restaurant.push(...data));
 
-fetch(api)
-    .then(blob => blob.json())
-    .then(data => restArr.push(...data));
-
-function filterRes(wordToMatch, restArr) {
-    return restArr.filter(place => {
+function findMatches(wordToMatch, restaurant) {
+    return restaurant.filter(establishments => {
         const regex = new RegExp(wordToMatch, 'gi');
-        return place.category.match(regex) || place.zip.match(regex)
+        return establishments.name.match(regex) || establishments.category.match(regex)
     });
 }
-const searchInput = document.querySelector('.UserInput');
-const suggestions = document.querySelector('.suggestions')
 
-function matches() {
-    const matchArr = filterRes(this.value, restArr);
-    const inputData = matchArr.map(place => {
-        if (this.value != '') {
-            return `
-            <li class="filteredDisplay">
-                <ul>
-                    <li>
-                        <span class="name">${place.name}</span>
-                    </li>
-                    <li>
-                        <span class="category">${place.category}</span>
-                    </li>
-                    <li>
-                        <address class="address">${place.address_line_1}</address>
-                    </li>
-                    <li>
-                        <span class="city">${place.city}</span>
-                    </li>
-                    <li>
-                        <span class="zip">${place.zip}</span>
-                        <br>
-                    </li>
-                </ul>
-            </li>
-            `;
-        }
+function displayMatches() {
+    const matchArray = findMatches(this.value, restaurant);
+    const html = matchArray.map(establishments => {
+        return `
+         <li>
+            <span class="name">${establishments.name}</span><br>
+            <span class="category">${establishments.category}</span><br>
+            <span class="address"><address>${establishments.address_line_1}, ${establishments.address_line_2}, ${establishments.city}, ${establishments.state}, ${establishments.zip}
+            </address></span>
+        </li>
+        `;
     }).join('');
+    suggestions.innerHTML=html;
     
-    searchInput.innerHTML = inputData;
-    suggestions.innerHTML = inputData;
+    const replaceRegex = new RegExp("------,",'gi');
+    delEmptyAddress = html.replace(replaceRegex," ");
+    suggestions.innerHTML=delEmptyAddress;  
 }
 
-searchInput.addEventListener('keyup', matches);
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
